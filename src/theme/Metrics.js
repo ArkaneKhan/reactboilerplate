@@ -1,4 +1,11 @@
-import { StyleSheet, PixelRatio, Dimensions, Platform } from "react-native";
+//
+//  Metrics.js:
+//  BoilerPlate
+//
+//  Created by Retrocube on 10/4/2019, 9:47:10 AM.
+//  Copyright © 2019 Retrocube. All rights reserved.
+//
+import { Dimensions, Platform } from "react-native";
 
 const { width, height } = Dimensions.get("window");
 

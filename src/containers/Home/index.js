@@ -1,42 +1,66 @@
 import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
-import { SafeAreaView, Text, Button, TouchableOpacity } from "react-native";
+import {
+    SafeAreaView,
+    Text,
+    Button,
+    TouchableOpacity,
+    StyleSheet,
+    View,
+    Image,
+    requireNativeComponent
+} from "react-native";
 import { push } from "../../services/NavigationService";
 import { Metrics } from "../../theme";
-import { request } from "../../actions/Login";
 
 class Home extends Component {
-
-  componentDidMount() {
-    this.props.request({ email: 'asd@gmail.com', password: '123456' })
-  }
-
-  render() {
-    console.log(
-      "Metrics",
-      Metrics.heightRatio(100) + "-" + Metrics.widthRatio(100)
-    );
-    return (
-      <Fragment>
-        <SafeAreaView>
-          <Text>Home</Text>
-          <TouchableOpacity
-            onPress={() => push("demo")}
-            style={{
-              height: Metrics.heightRatio(100),
-              width: Metrics.widthRatio(100),
-              backgroundColor: "red"
-            }}
-          />
-        </SafeAreaView>
-      </Fragment>
-    );
-  }
+    state = {
+        isLoaded: false
+    };
+    componentDidMount() {}
+    state = { isOn: false };
+    _onStatusChange = e => {
+        this.setState({ isOn: e.nativeEvent.isOn });
+    };
+    render() {
+        console.log(
+            "Metrics",
+            Metrics.heightRatio(100) + "-" + Metrics.widthRatio(100)
+        );
+        return (
+            <Fragment>
+                <SafeAreaView>
+                    <Text>Home</Text>
+                    <TouchableOpacity
+                        onPress={() => push("demo")}
+                        style={{
+                            height: Metrics.heightRatio(100),
+                            width: Metrics.widthRatio(100),
+                            backgroundColor: "red"
+                        }}
+                    />
+                </SafeAreaView>
+            </Fragment>
+        );
+    }
 }
-const actions = { request };
+const actions = {};
 const mapStateToProps = state => ({});
 
 export default connect(
-  mapStateToProps,
-  actions
+    mapStateToProps,
+    actions
 )(Home);
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: "#F5FCFF" },
+    top: { flex: 1, alignItems: "center", justifyContent: "center" },
+    bottom: {
+        width: "100%",
+        height: "100%",
+        zIndex: 999
+        // alignItems: "center",
+        // justifyContent: "center",
+        // flex: 1
+    }
+});

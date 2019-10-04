@@ -1,7 +1,14 @@
+//
+//  index.js:
+//  BoilerPlate
+//
+//  Created by Retrocube on 10/4/2019, 9:39:19 AM.
+//  Copyright © 2019 Retrocube. All rights reserved.
+//
 import { createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web and AsyncStorage for react-native
+import storage from "redux-persist/lib/storage";
 import { createLogger } from "redux-logger";
 import reducers from "../reducers";
 import rootSaga from "../sagas";
@@ -10,17 +17,17 @@ const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
 /* redux logger config */
 const logger = createLogger({
-  predicate: () => isDebuggingInChrome,
-  collapsed: true,
-  duration: true,
-  diff: true
+    predicate: () => isDebuggingInChrome,
+    collapsed: true,
+    duration: true,
+    diff: true
 });
 
 /* redux persist config */
 const persistConfig = {
-  key: "root",
-  storage,
-  whitelist: []
+    key: "root",
+    storage,
+    whitelist: []
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -29,8 +36,8 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  persistedReducer,
-  applyMiddleware(sagaMiddleware, logger)
+    persistedReducer,
+    applyMiddleware(sagaMiddleware, logger)
 );
 const persistor = persistStore(store);
 

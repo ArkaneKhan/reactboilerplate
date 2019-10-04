@@ -1,3 +1,10 @@
+//
+//  index.js:
+//  BoilerPlate
+//
+//  Created by Retrocube on 10/4/2019, 9:38:32 AM.
+//  Copyright © 2019 Retrocube. All rights reserved.
+//
 let instance = null;
 
 class singleton {
