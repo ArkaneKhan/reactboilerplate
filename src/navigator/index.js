@@ -5,14 +5,11 @@
 //  Created by Retrocube on 10/4/2019, 9:14:05 AM.
 //  Copyright © 2019 Retrocube. All rights reserved.
 //
-import {
-    createStackNavigator,
-    createAppContainer,
-    createSwitchNavigator
-} from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { dyanimcTitle } from "./navigatorHelper";
 import { Home, Demo } from "../containers";
 import { from } from "rxjs";
+import { createStackNavigator } from "react-navigation-stack";
 
 const HomeStack = createStackNavigator({
     home: {
