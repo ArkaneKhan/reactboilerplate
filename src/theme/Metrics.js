@@ -23,8 +23,10 @@ const IS_IPHONE_X =
 		screenHeight === IPHONE_XR_HEIGHT ||
 		screenWidth === IPHONE_XR_HEIGHT);
 
-const guidelineBaseWidth = IS_IPHONE_X ? 375 : 414;
-const guidelineBaseHeight = IS_IPHONE_X ? 812 : 736;
+var designedAtX = true;
+
+const guidelineBaseWidth = designedAtX ? 375 : 414;
+const guidelineBaseHeight = designedAtX ? 812 : 736;
 
 const scaleHorizontal = size => (screenWidth / guidelineBaseWidth) * +size;
 const scaleVertical = size => (screenHeight / guidelineBaseHeight) * size;
@@ -38,6 +40,7 @@ const NAVBAR_HEIGHT = Platform.OS === "ios" ? 44 : 56;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? (IS_IPHONE_X ? 44 : 20) : 0;
 
 export default {
+	designedAtX,
 	IS_IPHONE_X,
 	STATUSBAR_HEIGHT,
 	NAVBAR_HEIGHT,
