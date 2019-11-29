@@ -7,7 +7,7 @@
         "test": "jest",
         "lint": "eslint .",
         "postinstall": "npx jetify && cd ios && pod install && cd ..",
-        "addDependancies": "yarn add react-native-gesture-handler react-native-reanimated react-navigation react-redux redux-logger redux-persist redux-saga redux-storage redux-storage-decorator-filter axios moment @react-native-community/geolocation @react-native-community/netinfo react-native-flash-message react-native-globalspinner react-native-splash-screen",
+        "addDependancies": "yarn add react-native-gesture-handler react-native-reanimated react-navigation react-navigation-stack react-redux redux-logger redux-persist redux-saga redux-storage redux-storage-decorator-filter axios moment @react-native-community/geolocation @react-native-community/netinfo react-native-flash-message react-native-globalspinner react-native-splash-screen @react-native-community/async-storage",
         "iphone": "react-native run-ios --simulator \"iPhone Xs Max\"",
         "android": "react-native run-android"
     },
