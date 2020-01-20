@@ -15,16 +15,18 @@ const UPDATE = "UPDATE";
 const DELETE = "DELETE";
 
 function createRequestTypes(base) {
-    const res = {};
-    [REQUEST, SUCCESS, FAILURE, CANCEL, CREATE, UPDATE, DELETE].forEach(
-        type => {
-            res[type] = `${base}_${type}`;
-        }
-    );
-    return res;
+	const res = {};
+	[REQUEST, SUCCESS, FAILURE, CANCEL, CREATE, UPDATE, DELETE].forEach(
+		type => {
+			res[type] = `${base}_${type}`;
+		}
+	);
+	return res;
 }
 //DEFAULT ACTIONS
 export const GENERAL_ACTION = "GENERAL_ACTION";
+export const GENERAL_ACTION_MULTIPLE_REQUEST =
+	"GENERAL_ACTION_MULTIPLE_REQUEST";
 //SOCKET DEFAULT ACTIONS
 export const SOCKET_INFO = createRequestTypes("SOCKET_INFO");
 export const SOCKET_DUMP = createRequestTypes("SOCKET_DUMP");

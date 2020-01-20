@@ -1,6 +1,6 @@
 import _ from "lodash";
-import React, { Component } from "react";
-import { StatusBar, NativeModules } from "react-native";
+import React, { Fragment, Component } from "react";
+import { StatusBar, NativeModules, View } from "react-native";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./store";
@@ -16,7 +16,9 @@ import Spinner, { showSpinner, hideSpinner } from "react-native-globalspinner";
 
 export default class App extends Component {
 	componentDidMount() {
-		HttpServiceManager.initialize(constant.baseURL, {});
+		HttpServiceManager.initialize(constant.baseURL, {
+			token: constant.applicationToken
+		});
 		//set designedAtX verify it on Adobe XD Desgin file
 		//Metrics.designedAtX = false;
 	}
@@ -32,7 +34,7 @@ export default class App extends Component {
 	};
 	getNavigator = () => {
 		if (!this.state.isReduxLoaded) {
-			return null;
+			return () => {};
 		} else {
 			return rootNavigator();
 			//!_.isEmpty(store.getState().loginReducer.data)

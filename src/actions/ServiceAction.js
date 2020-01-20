@@ -5,52 +5,74 @@
 //  Created by Retrocube on 10/4/2019, 9:07:24 AM.
 //  Copyright © 2019 Retrocube. All rights reserved.
 //
-import { GENERAL_ACTION, LOGIN, LOGOUT } from "./ActionTypes";
+import {
+	GENERAL_ACTION,
+	GENERAL_ACTION_MULTIPLE_REQUEST,
+	LOGOUT
+} from "./ActionTypes";
 
 callback = () => {};
-export function request(
-    types,
-    service,
-    service_type,
-    data,
-    showHud,
-    successCB = callback,
-    failureCB = callback
-) {
-    return {
-        payload: data,
-        service,
-        service_type,
-        type: GENERAL_ACTION,
-        request_type: types,
-        showHud,
-        successCB,
-        failureCB
-    };
-}
 
+Request = {
+	url: String, //Service url
+	method: String, //Web Service type 'post,get,put,delete....'
+	data: Object, //Paramter for request
+	actionType: Object
+};
+export function request(
+	url, //Service url
+	method, //Web Service type 'post,get,put,delete....'
+	data, //Paramter for request
+	actionType = null, //Action Type
+	showHud = true, //Show spinner
+	successCB = callback,
+	failureCB = callback
+) {
+	return {
+		type: GENERAL_ACTION,
+		actionType,
+		url,
+		method,
+		data,
+		showHud,
+		successCB,
+		failureCB
+	};
+}
+export function multipleRequest(
+	requestArray: [Request],
+	showHud = true,
+	successCB = callback,
+	failureCB = callback
+) {
+	return {
+		type: GENERAL_ACTION_MULTIPLE_REQUEST,
+		requestArray,
+		showHud,
+		successCB,
+		failureCB
+	};
+}
+export function requestAction(types) {
+	return {
+		type: types.REQUEST
+	};
+}
 export function success(types, data) {
-    return {
-        data,
-        type: types.SUCCESS
-    };
+	return {
+		data,
+		type: types.SUCCESS
+	};
 }
 
 export function failure(types, errorMessage) {
-    return {
-        errorMessage,
-        type: types.FAILURE
-    };
+	return {
+		errorMessage,
+		type: types.FAILURE
+	};
 }
 export function logout() {
-    return {
-        type: LOGOUT
-    };
+	return {
+		type: LOGOUT
+	};
 }
-
-// export function failure(errorMessage: Object) {
-//     return {
-//         errorMessage,
-//         type: LOGIN.FAILURE
-//     };
-// }
