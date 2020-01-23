@@ -27,6 +27,7 @@ function createRequestTypes(base) {
 export const GENERAL_ACTION = "GENERAL_ACTION";
 export const GENERAL_ACTION_MULTIPLE_REQUEST =
 	"GENERAL_ACTION_MULTIPLE_REQUEST";
+export const NO_INTERNET = "NO_INTERNET";
 //SOCKET DEFAULT ACTIONS
 export const SOCKET_INFO = createRequestTypes("SOCKET_INFO");
 export const SOCKET_DUMP = createRequestTypes("SOCKET_DUMP");

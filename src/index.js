@@ -13,6 +13,7 @@ import HttpServiceManager from "./services/HttpServiceManager";
 import constant from "./constants";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Spinner, { showSpinner, hideSpinner } from "react-native-globalspinner";
+import Reachability from "react-native-reachability-popup";
 
 export default class App extends Component {
 	componentDidMount() {
@@ -55,6 +56,7 @@ export default class App extends Component {
 				</PersistGate>
 				<FlashMessage position="top" />
 				<Spinner color={Colors.primary.theme} />
+				<Reachability />
 			</Provider>
 		);
 	}

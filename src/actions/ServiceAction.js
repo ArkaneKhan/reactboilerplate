@@ -8,8 +8,13 @@
 import {
 	GENERAL_ACTION,
 	GENERAL_ACTION_MULTIPLE_REQUEST,
-	LOGOUT
+	LOGOUT,
+	NO_INTERNET
 } from "./ActionTypes";
+import {
+	isNetworkReachable,
+	isConnected
+} from "react-native-reachability-popup";
 
 callback = () => {};
 
@@ -28,6 +33,11 @@ export function request(
 	successCB = callback,
 	failureCB = callback
 ) {
+	if (!isNetworkReachable() && !isConnected()) {
+		return {
+			type: NO_INTERNET
+		};
+	}
 	return {
 		type: GENERAL_ACTION,
 		actionType,
@@ -45,6 +55,11 @@ export function multipleRequest(
 	successCB = callback,
 	failureCB = callback
 ) {
+	if (!isNetworkReachable() && !isConnected()) {
+		return {
+			type: NO_INTERNET
+		};
+	}
 	return {
 		type: GENERAL_ACTION_MULTIPLE_REQUEST,
 		requestArray,

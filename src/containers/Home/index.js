@@ -7,18 +7,18 @@ import { Metrics } from "../../theme";
 import { request, logout, multipleRequest } from "../../actions/ServiceAction";
 import { LOGIN, SIGNUP } from "../../actions/ActionTypes";
 import constant from "../../constants";
-import HttpServiceManager from "../../services/HttpServiceManager";
 
 class Home extends Component {
 	state = {
 		isLoaded: false
 	};
 	componentDidMount() {
-		this.hitService();
+		// this.hitService();
 	}
 	state = { isOn: false };
 	_onStatusChange = () => {
-		this.props.logout();
+		this.hitService();
+		// this.props.logout();
 	};
 	hitService = () => {
 		this.props.multipleRequest(
@@ -82,13 +82,13 @@ class Home extends Component {
 		return (
 			<Fragment>
 				<SafeAreaView>
-					<Text>Home</Text>
+					<Text>{"Home"}</Text>
 					<TouchableOpacity
 						onPress={this._onStatusChange}
 						style={{
 							height: Metrics.heightRatio(100),
 							width: Metrics.widthRatio(100),
-							backgroundColor: "red"
+							backgroundColor: "blue"
 						}}
 					/>
 				</SafeAreaView>
