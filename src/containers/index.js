@@ -7,5 +7,6 @@
 //
 import Home from "./Home";
 import Demo from "./Demo";
+import Login from "./Auth/Login";
 
-export { Home, Demo };
+export { Home, Demo, Login };
