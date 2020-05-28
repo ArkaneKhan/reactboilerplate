@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./store";
 import RootNavigator from "./navigator";
-import { navigatorRef, push } from "./services/NavigationService";
+import { navigatorRef } from "./services/NavigationService";
 import singleton from "./singleton";
 import SplashScreen from "react-native-splash-screen";
 import { Colors, Metrics } from "./theme";

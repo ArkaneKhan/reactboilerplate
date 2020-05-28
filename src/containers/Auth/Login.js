@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { push } from '../../services/NavigationService';
+import { navigate } from '../../services/NavigationService';
 
 export default class Login extends Component {
 

@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../../containers/Tabs/Home';
 import Details from '../../containers/Tabs/Details';
 import { Images } from '../../theme';
+import { toggleDrawer } from '../../services/NavigationService';
 
 
 const Tab = createBottomTabNavigator();
@@ -17,7 +18,7 @@ const HomeStack = ({ navigation }) => (
       component={Home}
       options={{
         headerLeft: () =>
-          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <TouchableOpacity onPress={() => toggleDrawer()}>
             <Image source={Images.icMenu} style={{ marginHorizontal: 15 }} />
           </TouchableOpacity>
       }}
@@ -33,7 +34,7 @@ const DetailsStack = ({ navigation }) => (
       component={Details}
       options={{
         headerLeft: () =>
-          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+          <TouchableOpacity onPress={() => toggleDrawer()}>
             <Image source={Images.icMenu} style={{ marginHorizontal: 15 }} />
           </TouchableOpacity>
       }}

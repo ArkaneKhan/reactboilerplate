@@ -9,6 +9,7 @@ import AppDrawer from '../../containers/Drawer';
 import Tabs from '../Tabs';
 import { Images } from '../../theme';
 import { backImage } from '../navigatorHelper';
+import { popToTop } from '../../services/NavigationService';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -24,7 +25,7 @@ const NotificationStack = ({ navigation }) => (
       component={Notifications}
       options={{
         headerLeft: () =>
-          <TouchableOpacity onPress={() => navigation.popToTop()}>
+          <TouchableOpacity onPress={() => popToTop()}>
             <Image source={Images.icBack} style={{ marginHorizontal: 15 }} />
           </TouchableOpacity>
       }}
@@ -44,7 +45,7 @@ const SettingsStack = ({ navigation }) => (
       component={Settings}
       options={{
         headerLeft: () =>
-          <TouchableOpacity onPress={() => navigation.popToTop()}>
+          <TouchableOpacity onPress={() => popToTop()}>
             <Image source={Images.icBack} style={{ marginHorizontal: 15 }} />
           </TouchableOpacity>
       }}

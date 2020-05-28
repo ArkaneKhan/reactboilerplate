@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-
+import { navigate } from '../../services/NavigationService';
 export default class Settings extends Component {
 
   state = {
@@ -17,7 +17,7 @@ export default class Settings extends Component {
 
     return (
       <View style={styles.container}>
-        <Button title="Change Password" onPress={() => this.props.navigation.navigate('ChangePassword')} />
+        <Button title="Change Password" onPress={() => navigate('ChangePassword')} />
       </View>
     )
 
