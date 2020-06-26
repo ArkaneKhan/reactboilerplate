@@ -5,20 +5,25 @@
 //  Created by Retrocube on 10/4/2019, 9:14:05 AM.
 //  Copyright © 2019 Retrocube. All rights reserved.
 //
-import { dyanimcTitle } from "./navigatorHelper";
 import React, { forwardRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNav from './Drawer';
+import { AuthStack } from './Stacks';
+import { LoginContext } from '../';
 
 const rootNavigator = forwardRef((props, ref) =>
-  <NavigationContainer ref={ref}>
-    {
-      props.isLogin ?
-        <DrawerNav />
-        :
-        <DrawerNav />
+  <LoginContext.Consumer>
+    {({ isLogin }) =>
+      <NavigationContainer ref={ref}>
+        {
+          isLogin ?
+            <DrawerNav />
+            :
+            <AuthStack />
+        }
+      </NavigationContainer>
     }
-  </NavigationContainer>
+  </LoginContext.Consumer>
 )
 
 export default rootNavigator;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import { navigate } from '../../services/NavigationService';
-
+import { LoginContext } from '../../';
 export default class Login extends Component {
 
   state = {
@@ -17,18 +17,19 @@ export default class Login extends Component {
     const { } = this.props
 
     return (
-      <View style={styles.container}>
-        <Button
-          title="Login"
-          onPress={() => { }}
-        /* 
-          dont call navigate after login success.
-          react navigation will automatically navigate when it will find user token
-          and the auth stack will be destroyed just like switch navigator in v4.
-          https://stackoverflow.com/questions/60402632/switchnavigator-with-react-navigation-5
-        */
-        />
-      </View>
+      <LoginContext.Consumer>
+        {({ isLogin, setLogin }) => {
+          return (
+            <View style={styles.container}>
+              <Button
+                title="Login"
+                onPress={() => setLogin()}
+
+              />
+            </View>
+          )
+        }}
+      </LoginContext.Consumer >
     )
 
   }

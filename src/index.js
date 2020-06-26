@@ -15,12 +15,19 @@ import FlashMessage, { showMessage } from "react-native-flash-message";
 import Spinner from "react-native-globalspinner";
 import Reachability from "react-native-reachability-popup";
 
-export const LoginContext = createContext({
-  isLogin: false,
-  setLogin: () => { }
-});
+export const LoginContext = createContext();
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.setLogin = this.setLogin.bind(this);
+    this.state = {
+      isLogin: false,
+      setLogin: this.setLogin,
+      isReduxLoaded: false
+    }
+  }
 
   componentDidMount() {
     HttpServiceManager.initialize(constant.baseURL, {
@@ -30,7 +37,7 @@ export default class App extends Component {
     //Metrics.designedAtX = false;
   }
 
-  state = { isReduxLoaded: false };
+  setLogin = (isLogin = true) => this.setState({ isLogin })
 
   onBeforeLift = () => {
     singleton.storeRef = store;
@@ -59,10 +66,11 @@ export default class App extends Component {
 
           {
             isReduxLoaded ?
-              <RootNavigator
-                ref={navigatorRef}
-                isLogin={true} // perform a check on user token
-              />
+              <LoginContext.Provider value={this.state} >
+                <RootNavigator
+                  ref={navigatorRef}
+                />
+              </LoginContext.Provider>
               :
               <View />
           }
