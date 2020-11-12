@@ -15,6 +15,7 @@ import FlatListHandler from "./FlatListHandler";
 import IconWithBadge from "./IconWithBadge";
 import ImageHandler from "./ImageHandler";
 import RoundProfileImage from "./RoundProfileImage";
+import Loader from "./Loader";
 export {
   MaterialTextField,
   AppButton,
@@ -26,4 +27,5 @@ export {
   IconWithBadge,
   ImageHandler,
   RoundProfileImage,
+  Loader,
 };
