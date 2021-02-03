@@ -14,35 +14,6 @@ import { pop, popToTop, toggleDrawer } from '../../services/NavigationService';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// const NotificationStack = ({ navigation }) => (
-//   <Stack.Navigator
-//     screenOptions={{
-//       ...backButton()
-//     }}
-//   >
-//     <Stack.Screen
-//       name="Notifications"
-//       component={Notifications}
-//     />
-//   </Stack.Navigator>
-// )
-
-// const SettingsStack = ({ navigation }) => (
-//   <Stack.Navigator
-//     screenOptions={{
-//       ...backButton()
-//     }}
-//   >
-//     <Stack.Screen
-//       name="Settings"
-//       component={Settings}
-//     />
-//     <Stack.Screen
-//       name="ChangePassword"
-//       component={ChangePassword}
-//     />
-//   </Stack.Navigator>
-// )
 const DrawerStack = () => (
   <Stack.Navigator
     screenOptions={{
@@ -67,7 +38,7 @@ const DrawerStack = () => (
       name="ChangePassword"
       component={ChangePassword}
     />
-  </Stack.Navigator >
+  </Stack.Navigator>
 )
 
 export default DrawerNav = () => (
