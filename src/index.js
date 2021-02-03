@@ -14,8 +14,7 @@ import constant from "./constants";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Spinner from "react-native-globalspinner";
 import Reachability from "react-native-reachability-popup";
-
-export const LoginContext = createContext();
+import { LoginContext } from './contexts';
 
 export default class App extends Component {
 

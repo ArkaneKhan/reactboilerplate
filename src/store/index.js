@@ -17,17 +17,17 @@ const isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
 
 /* redux logger config */
 const logger = createLogger({
-    predicate: () => isDebuggingInChrome,
-    collapsed: true,
-    duration: true,
-    diff: true
+  predicate: () => isDebuggingInChrome,
+  collapsed: true,
+  duration: true,
+  diff: true
 });
 
 /* redux persist config */
 const persistConfig = {
-    key: "root",
-    storage: AsyncStorage,
-    whitelist: []
+  key: "root",
+  storage: AsyncStorage,
+  whitelist: []
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -36,8 +36,9 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    persistedReducer,
-    applyMiddleware(sagaMiddleware, logger)
+  persistedReducer,
+  // applyMiddleware(sagaMiddleware, logger)
+  applyMiddleware(sagaMiddleware)
 );
 const persistor = persistStore(store);
 

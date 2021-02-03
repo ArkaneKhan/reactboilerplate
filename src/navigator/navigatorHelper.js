@@ -9,6 +9,9 @@ import React from 'react';
 import { Images, Metrics, AppStyles, Colors, Fonts } from "../theme";
 import { Image, TouchableOpacity } from "react-native";
 import { ImageButton } from '../reuseableComponents';
+import { HeaderBackButton } from '@react-navigation/stack';
+import utility from '../utility';
+import { pop } from '../services/NavigationService';
 
 const headerColor = {
   headerStyle: {
@@ -94,6 +97,26 @@ const dyanimcTitle = (navOptions = {}) => {
     }
   };
 };
+
+const backButton = (onPress = () => pop()) => {
+  return {
+    headerLeft: (props) => (
+      <HeaderBackButton
+        backImage={() => <Image source={Images.icBack} resizeMode="contain" />}
+        labelVisible={false}
+        onPress={onPress}
+        style={{
+          height: 30,
+          width: 30,
+          ...AppStyles.centerAligned,
+          paddingHorizontal: utility.isPlatformAndroid() ? 0 : 16,
+          marginLeft: utility.isPlatformAndroid() ? undefined : 8,
+        }}
+      />
+    ),
+  };
+};
+
 export {
   headerColor,
   removeBorder,
@@ -103,5 +126,6 @@ export {
   defaultNavOptions,
   navOptions,
   navButton,
-  dyanimcTitle
+  dyanimcTitle,
+  backButton
 };

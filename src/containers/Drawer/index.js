@@ -1,70 +1,57 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, FlatList, Button, SafeAreaView } from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, FlatList, Button, SafeAreaView } from 'react-native';
 import { navigate, toggleDrawer } from '../../services/NavigationService';
-import { LoginContext } from '../../';
+import { LoginContext } from '../../contexts';
 
 const drawerRoutes = [
   {
     title: "Notifications",
-    route: "NotificationStack"
+    route: "Notifications"
   },
   {
     title: "Settings",
-    route: "SettingsStack"
+    route: "Settings"
   },
   {
     title: "Logout",
     route: ""
   },
 ]
-export default class index extends Component {
 
-  state = {
+const index = (props) => {
 
-  }
+  const { } = props
+  const { setLogin } = useContext(LoginContext);
 
-  componentDidMount() {
-    global.log('mount')
-  }
-
-  componentWillUnmount() {
-    global.log('unmount')
-  }
-
-  onPress = (item, setLogin) => ev => {
+  const onPress = (item, setLogin) => ev => {
     toggleDrawer()
     if (item.title === 'Logout') {
       setLogin(false)
     } else {
       navigate(item.route)
     }
-
   }
 
-  render() {
-
-    const { } = this.props
-
-    return (
-      <LoginContext.Consumer>
-        {({ isLogin, setLogin }) => {
-          return (
-            <SafeAreaView style={styles.container}>
-              <FlatList
-                data={drawerRoutes}
-                renderItem={({ item }) => <Button title={item.title} onPress={this.onPress(item, setLogin)} />}
-                contentContainerStyle={{ paddingVertical: 15 }}
-                keyExtractor={(item) => item.route}
-              />
-            </SafeAreaView>
-          )
-        }}
-      </LoginContext.Consumer >
-    )
-
-  }
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={drawerRoutes}
+        renderItem={
+          ({ item }) =>
+            <Button title={item.title}
+              onPress={onPress(item, setLogin)}
+            />
+        }
+        contentContainerStyle={{ paddingVertical: 15 }}
+        keyExtractor={(item) => item.route}
+      />
+    </SafeAreaView>
+  )
 
 }
+
+export default index;
+
 
 const styles = StyleSheet.create({
   container: {

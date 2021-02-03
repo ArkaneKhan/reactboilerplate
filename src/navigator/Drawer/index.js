@@ -8,78 +8,72 @@ import ChangePassword from '../../containers/Drawer/ChangePassword';
 import AppDrawer from '../../containers/Drawer';
 import Tabs from '../Tabs';
 import { Images } from '../../theme';
-import { backImage } from '../navigatorHelper';
-import { popToTop } from '../../services/NavigationService';
+import { backButton, backImage } from '../navigatorHelper';
+import { pop, popToTop, toggleDrawer } from '../../services/NavigationService';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const NotificationStack = ({ navigation }) => (
+// const NotificationStack = ({ navigation }) => (
+//   <Stack.Navigator
+//     screenOptions={{
+//       ...backButton()
+//     }}
+//   >
+//     <Stack.Screen
+//       name="Notifications"
+//       component={Notifications}
+//     />
+//   </Stack.Navigator>
+// )
+
+// const SettingsStack = ({ navigation }) => (
+//   <Stack.Navigator
+//     screenOptions={{
+//       ...backButton()
+//     }}
+//   >
+//     <Stack.Screen
+//       name="Settings"
+//       component={Settings}
+//     />
+//     <Stack.Screen
+//       name="ChangePassword"
+//       component={ChangePassword}
+//     />
+//   </Stack.Navigator>
+// )
+const DrawerStack = () => (
   <Stack.Navigator
     screenOptions={{
-      ...backImage()
-    }}
-  >
-    <Stack.Screen
-      name="Notifications"
-      component={Notifications}
-      options={{
-        headerLeft: () =>
-          <TouchableOpacity onPress={() => popToTop()}>
-            <Image source={Images.icBack} style={{ marginHorizontal: 15 }} />
-          </TouchableOpacity>
-      }}
-    />
-
-  </Stack.Navigator >
-)
-
-const SettingsStack = ({ navigation }) => (
-  <Stack.Navigator
-    screenOptions={{
-      ...backImage()
-    }}
-  >
-    <Stack.Screen
-      name="Settings"
-      component={Settings}
-      options={{
-        headerLeft: () =>
-          <TouchableOpacity onPress={() => popToTop()}>
-            <Image source={Images.icBack} style={{ marginHorizontal: 15 }} />
-          </TouchableOpacity>
-      }}
-    />
-    <Stack.Screen name="ChangePassword" component={ChangePassword} />
-  </Stack.Navigator >
-)
-
-const DrawerStack = ({ navigation }) => (
-  <Stack.Navigator
-    headerMode='none'
-  >
+      ...backButton()
+    }}>
     <Stack.Screen
       name="TabStack"
       component={Tabs}
-    />
-
-    <Stack.Screen
-      name="NotificationStack"
-      component={NotificationStack}
+      options={{
+        headerShown: false
+      }}
     />
     <Stack.Screen
-      name="SettingsStack"
-      component={SettingsStack}
+      name="Notifications"
+      component={Notifications}
+    />
+    <Stack.Screen
+      name="Settings"
+      component={Settings}
+    />
+    <Stack.Screen
+      name="ChangePassword"
+      component={ChangePassword}
     />
   </Stack.Navigator >
 )
 
 export default DrawerNav = () => (
   <Drawer.Navigator
-    drawerContent={(props) => <AppDrawer {...props} />}
-  >
-
-    <Drawer.Screen
+    drawerContent={(props) => <AppDrawer {...props} />}>
+    <Stack.Screen
       name="DrawerStack"
       component={DrawerStack}
     />

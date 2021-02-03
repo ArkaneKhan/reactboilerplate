@@ -1,40 +1,26 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { navigate } from '../../services/NavigationService';
-import { LoginContext } from '../../';
-export default class Login extends Component {
+import { LoginContext } from '../../contexts';
 
-  state = {
+const Login = (props) => {
 
-  }
+  const { } = props
+  const { setLogin } = useContext(LoginContext);
 
-  componentDidMount() {
+  global.log('LOGIN')
+  return (
+    <View style={styles.container}>
+      <Button
+        title="Login"
+        onPress={() => setLogin()}
 
-  }
-
-  render() {
-
-    const { } = this.props
-
-    return (
-      <LoginContext.Consumer>
-        {({ isLogin, setLogin }) => {
-          return (
-            <View style={styles.container}>
-              <Button
-                title="Login"
-                onPress={() => setLogin()}
-
-              />
-            </View>
-          )
-        }}
-      </LoginContext.Consumer >
-    )
-
-  }
+      />
+    </View>
+  )
 
 }
+
+export default Login;
 
 const styles = StyleSheet.create({
   container: {

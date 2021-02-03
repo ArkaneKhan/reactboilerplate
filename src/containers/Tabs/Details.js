@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { navigate } from '../../services/NavigationService';
 
 export default class Details extends Component {
 
@@ -17,7 +18,7 @@ export default class Details extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Details</Text>
+        <Button title="Example" onPress={() => navigate('Example')} />
       </View>
     )
 
