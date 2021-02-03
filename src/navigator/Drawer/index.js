@@ -73,7 +73,7 @@ const DrawerStack = () => (
 export default DrawerNav = () => (
   <Drawer.Navigator
     drawerContent={(props) => <AppDrawer {...props} />}>
-    <Stack.Screen
+    <Drawer.Screen
       name="DrawerStack"
       component={DrawerStack}
     />
