@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import _ from 'lodash';
-import {View, Text, Animated, RefreshControl} from 'react-native';
-import PropTypes from 'prop-types';
-import ListEmpty from './ListEmpty';
-import ListFooter from './ListFooter';
-import Loader from '../Loader';
-import {Colors} from '../../theme';
+import React, { Component } from "react";
+import _ from "lodash";
+import { View, Text, Animated, RefreshControl } from "react-native";
+import PropTypes from "prop-types";
+import ListEmpty from "./ListEmpty";
+import ListFooter from "./ListFooter";
+import Loader from "../Loader";
+import { Colors } from "../../theme";
 
 class FlatListHandler extends Component {
   static propTypes = {
@@ -15,19 +15,19 @@ class FlatListHandler extends Component {
     fetchRequest: PropTypes.func,
   };
 
-  static defaultProps = {data: [], isFetching: false};
+  static defaultProps = { data: [], isFetching: false };
 
   scrollToTop = () =>
-    this.flatList && this.flatList.getNode().scrollToOffset({offset: 0});
+    this.flatList && this.flatList.getNode().scrollToOffset({ offset: 0 });
 
   keyExtractor = (item, index) => `item_${index}`;
 
   deBouncedOnEndReached = _.debounce(() => {
-    const {meta} = this.props;
+    const { meta } = this.props;
 
     // dummy meta obj has current page set to 0. this check is needed in case if meta was not sent to flat list handler
     if (meta && meta.current_page) {
-      const {current_page, last_page} = meta;
+      const { current_page, last_page } = meta;
       if (current_page < last_page) {
         this.props.fetchRequest &&
           this.props.fetchRequest(true, current_page + 1);
@@ -51,7 +51,7 @@ class FlatListHandler extends Component {
   onRefresh = () =>
     this.props.fetchRequest && this.props.fetchRequest(false, 1, true);
 
-  renderItem = ({index}) => (
+  renderItem = ({ index }) => (
     <View>
       <Text>{`item ${index}`}</Text>
     </View>
@@ -113,9 +113,12 @@ class FlatListHandler extends Component {
         showsHorizontalScrollIndicator={false}
         onScroll={
           nScroll
-            ? Animated.event([{nativeEvent: {contentOffset: {y: nScroll}}}], {
-                useNativeDriver: true,
-              })
+            ? Animated.event(
+                [{ nativeEvent: { contentOffset: { y: nScroll } } }],
+                {
+                  useNativeDriver: true,
+                }
+              )
             : undefined
         }
         {...this.props}
@@ -127,8 +130,8 @@ class FlatListHandler extends Component {
 const styles = {
   contentContainerStyle: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 };
 

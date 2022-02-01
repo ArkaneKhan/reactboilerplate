@@ -8,35 +8,34 @@ import RootNavigator from "./navigator";
 import { navigatorRef } from "./services/NavigationService";
 import singleton from "./singleton";
 import SplashScreen from "react-native-splash-screen";
-import { Colors, Metrics } from "./theme";
 import HttpServiceManager from "./services/HttpServiceManager";
 import constant from "./constants";
 import FlashMessage, { showMessage } from "react-native-flash-message";
 import Spinner from "react-native-globalspinner";
 import Reachability from "react-native-reachability-popup";
-import { LoginContext } from './contexts';
+import { LoginContext } from "./contexts";
+import { Colors } from "./theme";
 
 export default class App extends Component {
-
   constructor(props) {
     super(props);
     this.setLogin = this.setLogin.bind(this);
     this.state = {
       isLogin: false,
       setLogin: this.setLogin,
-      isReduxLoaded: false
-    }
+      isReduxLoaded: false,
+    };
   }
 
   componentDidMount() {
     HttpServiceManager.initialize(constant.baseURL, {
-      token: constant.applicationToken
+      token: constant.applicationToken,
     });
     //set designedAtX verify it on Adobe XD Desgin file
     //Metrics.designedAtX = false;
   }
 
-  setLogin = (isLogin = true) => this.setState({ isLogin })
+  setLogin = (isLogin = true) => this.setState({ isLogin });
 
   onBeforeLift = () => {
     singleton.storeRef = store;
@@ -46,42 +45,28 @@ export default class App extends Component {
     });
   };
 
-
   render() {
-
-    const { isReduxLoaded } = this.state
+    const { isReduxLoaded } = this.state;
 
     return (
       <Provider store={store}>
+        <StatusBar barStyle="light-content" backgroundColor={"#313131"} />
 
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor={Colors.secondary.azure}
-        />
-
-        <PersistGate
-          onBeforeLift={this.onBeforeLift}
-          persistor={persistor}>
-
-          {
-            isReduxLoaded ?
-              <LoginContext.Provider value={this.state} >
-                <RootNavigator
-                  ref={navigatorRef}
-                />
-              </LoginContext.Provider>
-              :
-              <View />
-          }
-
+        <PersistGate onBeforeLift={this.onBeforeLift} persistor={persistor}>
+          {isReduxLoaded ? (
+            <LoginContext.Provider value={this.state}>
+              <RootNavigator ref={navigatorRef} />
+            </LoginContext.Provider>
+          ) : (
+            <View />
+          )}
         </PersistGate>
 
         <FlashMessage position="top" />
 
-        <Spinner color={Colors.primary.theme} />
+        <Spinner color={Colors.THEME} />
 
         <Reachability />
-
       </Provider>
     );
   }

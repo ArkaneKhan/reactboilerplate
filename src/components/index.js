@@ -6,4 +6,9 @@
 //  Copyright © 2019 Retrocube. All rights reserved.
 //
 //  Add custom component here
-export {};
+import Block from "./Block";
+import Text from "./Text";
+import Icon from "./Icon";
+import Button from "./Button";
+import Checkbox from "./Checkbox";
+export { Block, Text, Icon, Button, Checkbox };
