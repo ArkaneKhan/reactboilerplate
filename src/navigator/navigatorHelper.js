@@ -9,8 +9,7 @@ import React from "react";
 import { Images, Metrics, AppStyles, Colors, Fonts } from "../theme";
 import { Image, TouchableOpacity } from "react-native";
 import { ImageButton } from "../reuseableComponents";
-import { HeaderBackButton } from "@react-navigation/stack";
-import utility from "../utility";
+import { HeaderBackButton } from '@react-navigation/elements';
 import { pop } from "../services/NavigationService";
 
 const headerColor = {
@@ -98,19 +97,49 @@ const dyanimcTitle = (navOptions = {}) => {
   };
 };
 
-const backButton = (onPress = () => pop()) => {
+const backButton = (onPress = () => pop(), color = '#000') => {
   return {
     headerLeft: (props) => (
       <HeaderBackButton
-        backImage={() => <Image source={Images.icBack} resizeMode="contain" />}
+        backImage={() => (
+          <Image
+            source={Images.icBack}
+            resizeMode="contain"
+            style={{ tintColor: color }}
+          />
+        )}
         labelVisible={false}
         onPress={onPress}
         style={{
           height: 30,
           width: 30,
+          marginLeft: 10,
           ...AppStyles.centerAligned,
-          paddingHorizontal: utility.isPlatformAndroid() ? 0 : 16,
-          marginLeft: utility.isPlatformAndroid() ? undefined : 8,
+        }}
+      />
+    ),
+  };
+};
+
+const menuBarImage = () => {
+  return {
+    headerLeft: (props) => (
+      <HeaderBackButton
+        backImage={() => (
+          <Image
+            source={Images.icBars}
+            style={{
+              marginLeft: Metrics.baseMargin,
+            }}
+          />
+        )}
+        labelVisible={false}
+        onPress={() => toggleDrawer()}
+        style={{
+          height: 30,
+          width: 30,
+          marginLeft: 10,
+          ...AppStyles.centerAligned,
         }}
       />
     ),

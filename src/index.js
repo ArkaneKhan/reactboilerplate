@@ -1,4 +1,5 @@
 import _ from "lodash";
+import 'react-native-gesture-handler';
 import React, { createContext, Component } from "react";
 import { StatusBar, View } from "react-native";
 import { Provider } from "react-redux";

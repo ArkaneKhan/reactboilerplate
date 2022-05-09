@@ -4,18 +4,16 @@ import { LoginContext } from "../../contexts";
 import { Button } from "../../components";
 
 const Login = (props) => {
-  const {} = props;
+  const { } = props;
   const { setLogin } = useContext(LoginContext);
 
   global.log("LOGIN");
   return (
     <View style={styles.container}>
-      {/* <Button
-        title="Login"
-        onPress={() => setLogin()}
 
-      /> */}
-      <Button>Login</Button>
+      <Button
+        onPress={() => setLogin()}
+      >Login</Button>
     </View>
   );
 };

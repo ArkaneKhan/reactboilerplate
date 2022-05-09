@@ -7,7 +7,7 @@
 //
 import { SOCKET_WRITE } from "./ActionTypes";
 
-var callback = () => {};
+var callback = () => { };
 var callbackRef = [];
 export function write(
     types,

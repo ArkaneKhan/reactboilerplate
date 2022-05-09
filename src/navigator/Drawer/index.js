@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Notifications from '../../containers/Drawer/Notifications';
 import Settings from '../../containers/Drawer/Settings';
@@ -10,8 +9,9 @@ import Tabs from '../Tabs';
 import { Images } from '../../theme';
 import { backButton, backImage } from '../navigatorHelper';
 import { pop, popToTop, toggleDrawer } from '../../services/NavigationService';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const DrawerStack = () => (

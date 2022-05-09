@@ -33,13 +33,13 @@ class HttpServiceManager {
 			headers: authHeader
 		});
 		HttpServiceManager.getInstance().axiosInstance.interceptors.request.use(
-			function(config) {
+			function (config) {
 				config.headers[
 					"user-token"
 				] = HttpServiceManager.getInstance().userToken;
 				return config;
 			},
-			function(error) {
+			function (error) {
 				global.log("header Config err:", error);
 				return error;
 			}

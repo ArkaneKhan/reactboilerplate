@@ -10,9 +10,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import MainStack from './Drawer';
 import { AuthStack } from './Stacks';
 import { LoginContext } from '../contexts';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const rootNavigator = forwardRef((props, ref) => {
   const { isLogin } = useContext(LoginContext);

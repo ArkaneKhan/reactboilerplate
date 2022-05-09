@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../../containers/Tabs/Home';
 import Details from '../../containers/Tabs/Details';
 import { Images } from '../../theme';
@@ -10,7 +10,7 @@ import Example from '../../containers/Tabs/Example';
 import { backButton } from '../navigatorHelper';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const TabNav = () => (
   <Tab.Navigator>

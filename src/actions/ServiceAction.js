@@ -16,7 +16,7 @@ import {
 	isConnected
 } from "react-native-reachability-popup";
 
-callback = () => {};
+callback = () => { };
 
 Request = {
 	url: String, //Service url
